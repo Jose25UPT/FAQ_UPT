@@ -1,0 +1,313 @@
+:root {
+    --primary: #003366;
+    --white: #fff;
+    --light: #f9f9f9;
+    --border: #ddd;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+body { background: var(--light); color: #333; line-height: 1.6; }
+
+header {
+    background: var(--primary);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+
+.search-box {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 20px 15px 45px;
+    border: 2px solid var(--border);
+    border-radius: 50px;
+    font-size: 16px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+/* Acordeón FAQ */
+.faq-item {
+    background: var(--white);
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem;
+    background: var(--white);
+    border: none;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question:hover { background: #f0f4f8; }
+
+.faq-question i {
+    color: var(--primary);
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-question i { transform: rotate(180deg); }
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #fafafa;
+    border-top: 1px solid #eee;
+}
+
+.faq-item.active .faq-answer { max-height: 2000px; }
+
+.answer-content { padding: 1.5rem; }
+
+/* Imágenes */
+.image-wrapper {
+    margin: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.preview-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: zoom-in;
+    transition: transform 0.3s;
+}
+
+.preview-img:hover { transform: scale(1.02); }
+
+.img-caption {
+    display: block;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Galería */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.gallery-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.gallery-card:hover { transform: translateY(-5px); }
+
+.gallery-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-title {
+    display: block;
+    text-align: center;
+    padding: 8px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* Botones de documentos */
+.attachments {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #ccc;
+}
+
+.attachments h4 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.doc-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn-doc {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 18px;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s;
+}
+
+.btn-doc:hover { opacity: 0.9; }
+.btn-doc i { margin-right: 8px; }
+
+.btn-pdf { background: #b30b00; }
+.btn-word { background: #2b579a; }
+.btn-img { background: #28a745; }
+
+/* Modal PDF */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: var(--white);
+    margin: 3% auto;
+    width: 90%;
+    max-width: 900px;
+    height: 80vh;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-pdf { max-width: 1000px; }
+
+.modal-header {
+    padding: 15px 20px;
+    background: #eee;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 { color: var(--primary); }
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-btn:hover { color: #000; }
+
+.modal-body {
+    flex: 1;
+    overflow: auto;
+    padding: 10px;
+    background: #525659;
+}
+
+/* Canvas para PDF.js */
+#pdfViewerContainer canvas {
+    max-width: 100%;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+}
+
+.pdf-controls {
+    padding: 10px 20px;
+    background: #eee;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.pdf-controls button {
+    padding: 8px 16px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pdf-controls button:hover { opacity: 0.9; }
+
+#pageNum { font-weight: 600; }
+
+/* Modal Imagen (Lightbox) */
+.image-modal {
+    background: rgba(0,0,0,0.95);
+    z-index: 2000;
+}
+
+.image-modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    margin-top: 2%;
+    border-radius: 5px;
+    animation: zoom 0.3s;
+}
+
+@keyframes zoom {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.image-close {
+    position: absolute;
+    top: 20px; right: 40px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-content { margin: 5% auto; width: 95%; height: 75vh; }
+    .doc-buttons { flex-direction: column; }
+    .btn-doc { width: 100%; justify-content: center; }
+}

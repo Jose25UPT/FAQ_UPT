@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ UPT - Centro de Ayuda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1><i class="fas fa-university"></i> FAQ UPT</h1>
+        <p>Centro de Ayuda - Todo local, sin servidor</p>
+    </header>
+
+    <div class="container">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Buscar trámite...">
+        </div>
+
+        <div id="faqList">
+
+            <!-- PREGUNTA 2: Galería de imágenes + PDF -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Qué necesito para titularme?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>Revisa los requisitos visuales:</p>
+
+                        <!-- Galería de imágenes locales -->
+                        <div class="image-gallery">
+                            <div class="gallery-card" onclick="openImageModal('assets/images/imagen.jpeg')">
+                                <img src="assets/images/imagen.jpeg" alt="Requisitos" loading="lazy">
+                                <span class="gallery-title">Documentos</span>
+                            </div>
+                            <div class="gallery-card" onclick="openImageModal('assets/images/imagen.jpeg')">
+                                <img src="assets/images/imagen.jpeg" alt="Flujograma" loading="lazy">
+                                <span class="gallery-title">Proceso</span>
+                            </div>
+                        </div>
+
+                        <div class="attachments">
+                            <h4><i class="fas fa-paperclip"></i> Reglamento:</h4>
+                            <div class="doc-buttons">
+                                <button class="btn-doc btn-pdf" 
+                                        onclick="openPDFModal('assets/docs/doc1.pdf')">
+                                    <i class="fas fa-file-pdf"></i> Ver Reglamento
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- PREGUNTA 2: Galería de imágenes + PDF -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Qué necesito para titularme?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>Revisa los requisitos visuales:</p>
+
+                        <!-- Galería de imágenes locales -->
+                        <div class="image-gallery">
+                            <div class="gallery-card" onclick="openImageModal('assets/images/imagen.jpeg')">
+                                <img src="assets/images/imagen.jpeg" alt="Requisitos" loading="lazy">
+                                <span class="gallery-title">Documentos</span>
+                            </div>
+                            <div class="gallery-card" onclick="openImageModal('assets/images/imagen.jpeg')">
+                                <img src="assets/images/imagen.jpeg" alt="Flujograma" loading="lazy">
+                                <span class="gallery-title">Proceso</span>
+                            </div>
+                        </div>
+
+                        <div class="attachments">
+                            <h4><i class="fas fa-paperclip"></i> Reglamento:</h4>
+                            <div class="doc-buttons">
+                                <button class="btn-doc btn-pdf" 
+                                        onclick="openPDFModal('assets/docs/doc1.pdf')">
+                                    <i class="fas fa-file-pdf"></i> Ver Reglamento
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- PREGUNTA 2: Galería de imágenes + PDF -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Qué necesito para titularme?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>Revisa los requisitos visuales:</p>
+
+                        <!-- Galería de imágenes locales -->
+                        <div class="image-gallery">
+                            <div class="gallery-card" onclick="openImageModal('assets/images/imagen.jpeg')">
+                                <img src="assets/images/imagen.jpeg" alt="Requisitos" loading="lazy">
+                                <span class="gallery-title">Documentos</span>
+                            </div>
+                            <div class="gallery-card" onclick="openImageModal('assets/images/imagen.jpeg')">
+                                <img src="assets/images/imagen.jpeg" alt="Flujograma" loading="lazy">
+                                <span class="gallery-title">Proceso</span>
+                            </div>
+                        </div>
+
+                        <div class="attachments">
+                            <h4><i class="fas fa-paperclip"></i> Reglamento:</h4>
+                            <div class="doc-buttons">
+                                <button class="btn-doc btn-pdf" 
+                                        onclick="openPDFModal('assets/docs/doc1.pdf')">
+                                    <i class="fas fa-file-pdf"></i> Ver Reglamento
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+
+        </div>
+    </div>
+
+    <!-- MODAL PARA PDF (usando PDF.js desde CDN) -->
+    <div id="pdfModal" class="modal">
+        <div class="modal-content modal-pdf">
+            <div class="modal-header">
+                <h3 id="pdfModalTitle">Vista Previa</h3>
+                <button class="close-btn" onclick="closePDFModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="pdfViewerContainer">
+                <!-- PDF.js renderizará aquí -->
+            </div>
+            <div class="pdf-controls">
+                <button id="prevPage">❮ Anterior</button>
+                <span id="pageNum">Página 1</span>
+                <button id="nextPage">Siguiente ❯</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA IMÁGENES (Lightbox) -->
+    <div id="imageModal" class="modal image-modal">
+        <span class="image-close" onclick="closeImageModal()">&times;</span>
+        <img class="image-modal-content" id="imageModalImg">
+        <div class="image-caption" id="imageModalCaption"></div>
+    </div>
+
+    <!-- PDF.js desde CDN (para previsualizar PDFs localmente) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // Configurar worker de PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
